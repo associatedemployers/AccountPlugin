@@ -1,8 +1,8 @@
 <?php
 /* 
 Plugin Name: Associated Employers Member Management
-Version: 1.0
-Author: Webgrain
+Version: 1.1
+Author: AE Development
 */
 
 date_default_timezone_set('America/Denver');
