@@ -37,7 +37,6 @@ class subuser_list_table extends WP_List_Table {
 			$search = " WHERE ae_user.first_name LIKE '%$search_term%' OR ae_user.last_name LIKE '%$search_term%' OR ae_company.company LIKE '%$search_term%' ";
 		}
 		$sql = 'SELECT ae_user.id, ae_user.first_name, ae_user.last_name, ae_user.company_id, ae_company.company FROM '. $ust .' INNER JOIN '. $cmt .' ON ae_user.company_id = ae_company.id '. $search .' '. $sort_column;
-		/*$sql = "SELECT id, first_name, last_name, company_id FROM  " . $webgrain->subusertable . " " . $search . " " . $sort_column;*/
 		$result = $wpdb->get_results($sql);
 
 		foreach($result as $r) {
@@ -45,9 +44,6 @@ class subuser_list_table extends WP_List_Table {
 			$first_name = $r->first_name;
 			$last_name = $r->last_name;
 			$company_id = $r->company_id;
-			/*$sql2 = "SELECT company FROM " . $webgrain->usertable . " WHERE id = $company_id";
-			$result2 = $wpdb->get_results($wpdb->prepare($sql2, 0));
-			if(!empty($result2)) { foreach($result2 as $r2) { $company = $r2->company; } } else { $company = ''; }*/
 
 			$data_array = array('id' => $id, 'company'=>$r->company, 'first_name'=>$first_name, 'last_name'=>$last_name);
 			array_push($column_array, $data_array);
